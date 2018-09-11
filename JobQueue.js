@@ -17,9 +17,18 @@
 /***** EXPERIMENTAL *****/
 /*
 let jobList = document.querySelectorAll('[id^=\'JobLogName\']');
-let pageCount = [];
+let jobs = [];
 
 for (i = 0; i < jobList.length; i++) {
+    jobs.push({'index': i, 'name': jobList[i].innerText});
+}
+~~~~~~~~
+jobList.forEach((job, index) => {
+	localStorage.setItem('Job', JSON.stringify({'index': index, 'name': job.innerText}));
+});
+
+for (i = 0; i < jobList.length; i++) {
+    localStorage.setItem('Job', JSON.stringify({'index': index, 'name': job.innerText}));
     let buttonID = `JobLogRadioButton_${i}`;
     document.getElementById(buttonID).click();
 	document.getElementById('ViewDetailsButton').click()
