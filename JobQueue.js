@@ -13,3 +13,20 @@
     setTimeout(window.location.reload.bind(window.location), 60000);
     // Your code here...
 })();
+
+/***** EXPERIMENTAL *****/
+/*
+let jobList = document.querySelectorAll('[id^=\'JobLogName\']');
+let pageCount = [];
+
+for (i = 0; i < jobList.length; i++) {
+    let buttonID = `JobLogRadioButton_${i}`;
+    document.getElementById(buttonID).click();
+	document.getElementById('ViewDetailsButton').click()
+	.then(() => {
+		pageCount[i] = document.getElementById('JobDetailsValue_2').innerText.replace(' ','');
+	});
+	console.log(pageCount[i]);
+}
+
+*/
