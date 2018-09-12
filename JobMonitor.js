@@ -4,7 +4,7 @@
 // @version      0.2
 // @description  try to take over the world!
 // @author       You
-// @match        https://172.16.104.76/hp/device/JobLogReport/Index
+// @match        https://172.16.104.76/hp/device/JobLogReport/*
 // @grant        none
 // ==/UserScript==
 
