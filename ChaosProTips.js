@@ -4,12 +4,12 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match        https://old.reddit.com/r/IllegalLifeProTips+LifeProTips+ShittyLifeProTips+UnethicalLifeProTips/
+// @match        https://old.reddit.com/r/IllegalLifeProTips+LifeProTips+ShittyLifeProTips+UnethicalLifeProTips/*
 // @grant        none
 // ==/UserScript==
 
 // View a multireddit in utter chaos /r/IllegalLifeProTips+LifeProTips+ShittyLifeProTips+UnethicalLifeProTips/
-//    This only works in the old reddit, I haven't taken a look at New Reddit nor do I want to create this for the redesign at the moment
+// This only works in the old reddit, I haven't taken a look at, nor do I want to create this for the redesign at the moment
 
 (function() {
     // These are the subheadings beneath the title with attributes about the submitter, saying what subreddit it was posted in
@@ -19,14 +19,11 @@
     [...submissionSubreddits].forEach(submission =>  submission.parentNode.removeChild(submission));
     // [...submissionSubreddits].forEach(submission =>  submission.innerText = "Random LPT!");
 
-
     // These are the domains where the post resides (ex. "i.imgur.com", "*.redditmedia.com", "self.whateverSubreddit")
     let submissionDomains = document.getElementsByClassName('domain');
 
     // Removing the submissions' domains
     [...submissionDomains].forEach(submission =>  submission.parentNode.removeChild(submission));
-
-
 
     // Getting all the submissions' titles
     let submissionTitles = document.querySelectorAll('p.title');
