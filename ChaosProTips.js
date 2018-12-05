@@ -4,7 +4,7 @@
 // @version      1.0
 // @description  try to take over the world!
 // @author       https://github.com/atlc
-// @match        https://old.reddit.com/r/IllegalLifeProTips+LifeProTips+ShittyLifeProTips+UnethicalLifeProTips/*
+// @match        https://*.reddit.com/r/IllegalLifeProTips+LifeProTips+ShittyLifeProTips+UnethicalLifeProTips/*
 // @grant        none
 // ==/UserScript==
 
