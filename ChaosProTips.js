@@ -21,7 +21,8 @@
     // submissionSubreddits.forEach(submission =>  submission.innerText = "LPTRoulette");
 
     // Removes flair to avoid getting added to the title when the submission domain is removed below
-    [...document.getElementsByClassName('flairrichtext')].forEach((s) => s.parentNode.removeChild(s));
+    [...document.getElementsByClassName('flairrichtext')].forEach((flair) => flair.parentNode.removeChild(flair));
+    [...document.getElementsByClassName('linkflairlabel')].forEach((flair) => flair.parentNode.removeChild(flair));
 
     // These are the domains where the post resides (ex. "i.imgur.com", "*.redditmedia.com", "self.whateverSubreddit")
     let submissionDomains = [...document.getElementsByClassName('domain')];
