@@ -17,10 +17,10 @@
     let submissionSubreddits = [...document.getElementsByClassName('subreddit hover may-blank')];
 
     // To remove the subreddit name run the below line, to change it to "LPTRoulette" comment out the first and uncomment the second
-    submissionSubreddits.forEach(submission => submission.parentNode.removeChild(submission));
-    // submissionSubreddits.forEach(submission =>  submission.innerText = "LPTRoulette");
+    submissionSubreddits.forEach(subreddit => subreddit.parentNode.removeChild(subreddit));
+    // submissionSubreddits.forEach(subreddit =>  subreddit.innerText = "LPTRoulette");
 
-    // Removes flair to avoid getting added to the title when the submission domain is removed below
+    // Removes flairs to avoid getting added to the title when the submission domain is removed below
     [...document.getElementsByClassName('flairrichtext')].forEach((flair) => flair.parentNode.removeChild(flair));
     [...document.getElementsByClassName('linkflairlabel')].forEach((flair) => flair.parentNode.removeChild(flair));
 
@@ -28,15 +28,17 @@
     let submissionDomains = [...document.getElementsByClassName('domain')];
 
     // Removing the submissions' domains
-    submissionDomains.forEach(submission => submission.parentNode.removeChild(submission));
+    submissionDomains.forEach(domain => domain.parentNode.removeChild(domain));
 
     // Getting all the submissions' titles
     let submissionTitles = [...document.querySelectorAll('p.title')];
 
     // For the maximum chaos, completely randomizes all title instances of 'ULPT', 'ILPT', 'LPT', or 'SLPT'
-    submissionTitles.forEach(title => title.innerText = title.innerText.replace(/LPT|ULPT|ILPT|SLPT/gi, (t) => {
-    	let randomTitles = ["LPT", "ULPT", "ILPT", "SLPT"];
-        t = randomTitles[Math.floor(Math.random() * 4)];
-        return t;
-    }));
+    submissionTitles.forEach(title => {
+        title.innerText = title.innerText.replace(/LPT|ULPT|ILPT|SLPT/gi, t => {
+            let randomTitles = ["LPT", "ULPT", "ILPT", "SLPT"];
+            t = randomTitles[Math.floor(Math.random() * 4)];
+            return t;
+        });
+    });
 })();
