@@ -4,7 +4,8 @@
 // @version      1.0
 // @description  try to take over the world!
 // @author       https://github.com/atlc
-// @match        https://*.reddit.com/r/IllegalLifeProTips+LifeProTips+ShittyLifeProTips+UnethicalLifeProTips/*
+// @match        https://old.reddit.com/r/IllegalLifeProTips+LifeProTips+ShittyLifeProTips+UnethicalLifeProTips/*
+// @match        https://www.reddit.com/r/IllegalLifeProTips+LifeProTips+ShittyLifeProTips+UnethicalLifeProTips/*
 // @grant        none
 // ==/UserScript==
 
@@ -13,24 +14,28 @@
 
 (function() {
     // These are the subheadings beneath the title with attributes about the submitter, saying what subreddit it was posted in
-    let submissionSubreddits = document.getElementsByClassName('subreddit hover may-blank');
+    let submissionSubreddits = [...document.getElementsByClassName('subreddit hover may-blank')];
 
-    // To remove the subreddit name run the below line, to change it to "RandomLPT" comment out the first and uncomment the second
-    [...submissionSubreddits].forEach(submission => submission.parentNode.removeChild(submission));
-    // [...submissionSubreddits].forEach(submission =>  submission.innerText = "Random LPT!");
+    // To remove the subreddit name run the below line, to change it to "LPTRoulette" comment out the first and uncomment the second
+    submissionSubreddits.forEach(submission => submission.parentNode.removeChild(submission));
+    // submissionSubreddits.forEach(submission =>  submission.innerText = "LPTRoulette");
+
+    // Removes flair to avoid getting added to the title when the submission domain is removed below
+    [...document.getElementsByClassName('flairrichtext')].forEach((s) => s.parentNode.removeChild(s));
 
     // These are the domains where the post resides (ex. "i.imgur.com", "*.redditmedia.com", "self.whateverSubreddit")
-    let submissionDomains = document.getElementsByClassName('domain');
+    let submissionDomains = [...document.getElementsByClassName('domain')];
 
     // Removing the submissions' domains
-    [...submissionDomains].forEach(submission => submission.parentNode.removeChild(submission));
+    submissionDomains.forEach(submission => submission.parentNode.removeChild(submission));
 
     // Getting all the submissions' titles
-    let submissionTitles = document.querySelectorAll('p.title');
+    let submissionTitles = [...document.querySelectorAll('p.title')];
 
     // For the maximum chaos, completely randomizes all title instances of 'ULPT', 'ILPT', 'LPT', or 'SLPT'
-    [...submissionTitles].forEach(title => title.innerText = title.innerText.replace(/LPT|ULPT|ILPT|SLPT/gi, (t) => {
+    submissionTitles.forEach(title => title.innerText = title.innerText.replace(/LPT|ULPT|ILPT|SLPT/gi, (t) => {
     	let randomTitles = ["LPT", "ULPT", "ILPT", "SLPT"];
-        return t = randomTitles[Math.floor(Math.random() * 4)];
+        t = randomTitles[Math.floor(Math.random() * 4)];
+        return t;
     }));
 })();
