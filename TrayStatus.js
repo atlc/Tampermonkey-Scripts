@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Print tray status
+// @name         TrayStatus.js
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
@@ -15,15 +15,26 @@
     let tray2 = document.getElementById('TrayBinStatus_2').innerHTML;
     let tray3 = document.getElementById('TrayBinStatus_3').innerHTML;
 
-    if (tray2 != 'OK') {
+    if (tray2 == 'Empty') {
         changeFavicon();
+        document.querySelector('title').innerText = 'PAPER TRAY 2 EMPTY';
         alert('PAPER TRAY 2 EMPTY');
+    } else if (tray2 != 'OK') {
+        changeFavicon();
+        document.querySelector('title').innerText = 'PAPER TRAY 2 OPEN/ERROR';
+        alert('PAPER TRAY 2 OPEN/ERROR');
     }
 
-    if (tray3 != 'OK') {
+    if (tray3 == 'Empty') {
         changeFavicon();
+        document.querySelector('title').innerText = 'PAPER TRAY 3 EMPTY';
         alert('PAPER TRAY 3 EMPTY');
+    } else if (tray3 != 'OK') {
+        changeFavicon();
+        document.querySelector('title').innerText = 'PAPER TRAY 3 OPEN/ERROR';
+        alert('PAPER TRAY 3 OPEN/ERROR');
     }
+
 
     function changeFavicon() {
         document.querySelector("link[rel='shortcut icon']").href = 'https://i.imgur.com/OZ9vGoY.png';
