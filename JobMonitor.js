@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Printer Job monitor
+// @name         JobMonitor.js
 // @namespace    http://tampermonkey.net/
 // @version      0.2
 // @description  try to take over the world!
@@ -12,13 +12,17 @@
     'use strict';
     setTimeout(window.location.reload.bind(window.location), 30000);
 
-    let radios = document.querySelectorAll('[id^=\'JobLogRadioButton_\']');
+    window.onload = function() {
+        document.title = document.getElementsByClassName('msg-center notification')[0].getAttribute('tooltiptext').replace('Message Center:notification;','')
 
-    radios.forEach((r) => {
-        r.addEventListener('click', () => {
-            document.getElementById('ViewDetailsButton').click();
+        let radios = document.querySelectorAll('[id^=\'JobLogRadioButton_\']');
+
+        radios.forEach((r) => {
+            r.addEventListener('click', () => {
+                document.getElementById('ViewDetailsButton').click();
+            });
         });
-    });
+    }
 })();
 
 /***** EXPERIMENTAL *****/
