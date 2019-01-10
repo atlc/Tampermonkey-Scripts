@@ -12,18 +12,20 @@
     'use strict';
     setTimeout(window.location.reload.bind(window.location), 30000);
 
-    window.onload = function() {
-        document.title = document.getElementsByClassName('msg-center notification')[0].getAttribute('tooltiptext').replace('Message Center:notification;','')
+    setTimeout(function() {
+        let msgCtrStatus = document.getElementsByClassName('msg-center notification')[0].getAttribute('tooltiptext').replace('Message Center:notification;','');
+        msgCtrStatus ? document.title = msgCtrStatus : document.title = document.title;
+    }, 1500);
 
-        let radios = document.querySelectorAll('[id^=\'JobLogRadioButton_\']');
+    let radios = document.querySelectorAll('[id^=\'JobLogRadioButton_\']');
 
-        radios.forEach((r) => {
-            r.addEventListener('click', () => {
-                document.getElementById('ViewDetailsButton').click();
-            });
+    radios.forEach((r) => {
+        r.addEventListener('click', () => {
+            document.getElementById('ViewDetailsButton').click();
         });
-    }
+    });
 })();
+
 
 /***** EXPERIMENTAL *****/
 /*
