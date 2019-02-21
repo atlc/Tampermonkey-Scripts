@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         JobMonitor.js
+// @name         JobLogMonitor.js
 // @namespace    http://tampermonkey.net/
 // @version      0.2
 // @description  try to take over the world!
@@ -12,12 +12,7 @@
     'use strict';
     setTimeout(window.location.reload.bind(window.location), 30000);
 
-    setTimeout(function() {
-        let msgCtrStatus = document.getElementsByClassName('msg-center notification')[0].getAttribute('tooltiptext').replace('Message Center:notification;','');
-        msgCtrStatus ? document.title = msgCtrStatus : document.title = document.title;
-    }, 1500);
-
-    let radios = document.querySelectorAll('[id^=\'JobLogRadioButton_\']');
+    let radios = [...document.querySelectorAll('[id^=\'JobLogRadioButton_\']')];
 
     radios.forEach((r) => {
         r.addEventListener('click', () => {
@@ -25,30 +20,3 @@
         });
     });
 })();
-
-
-/***** EXPERIMENTAL *****/
-/*
-let jobList = document.querySelectorAll('[id^=\'JobLogName\']');
-let jobs = [];
-
-for (i = 0; i < jobList.length; i++) {
-    jobs.push({'index': i, 'name': jobList[i].innerText});
-}
-~~~~~~~~
-jobList.forEach((job, index) => {
-	localStorage.setItem('Job', JSON.stringify({'index': index, 'name': job.innerText}));
-});
-
-for (i = 0; i < jobList.length; i++) {
-    localStorage.setItem('Job', JSON.stringify({'index': index, 'name': job.innerText}));
-    let buttonID = `JobLogRadioButton_${i}`;
-    document.getElementById(buttonID).click();
-	document.getElementById('ViewDetailsButton').click()
-	.then(() => {
-		pageCount[i] = document.getElementById('JobDetailsValue_2').innerText.replace(' ','');
-	});
-	console.log(pageCount[i]);
-}
-
-*/
