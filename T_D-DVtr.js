@@ -11,5 +11,7 @@
 (function() {
     'use strict';
     setTimeout(window.location.reload.bind(window.location), 120000);
-    [...document.getElementsByClassName('arrow down login-required access-required')].forEach(postDownvote => postDownvote.click());
+    let posts = [...document.getElementsByClassName('arrow down login-required access-required')];
+    posts.forEach(downvote => downvote.click());
+    console.log(`Finished downvoting ${posts.length} posts.`);
 })();
