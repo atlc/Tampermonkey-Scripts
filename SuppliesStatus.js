@@ -12,6 +12,9 @@
     'use strict';
     setTimeout(window.location.reload.bind(window.location), 900000);
 
-    let tonerPagesRemaining = parseInt(document.getElementById('BlackCartridge1-EstimatedPagesRemaining').innerHTML);
-    document.title = `Toner Life Left: ${Number(tonerPagesRemaining).toLocaleString()}`;
+    let tonerPagesRemaining = document.getElementById('BlackCartridge1-EstimatedPagesRemaining').innerHTML;
+    let tonerFull = (tonerPagesRemaining == '&gt;8800');
+    let tonerLow = (tonerPagesRemaining == 'Low')
+    let tonerVeryLow = (tonerPagesRemaining == 'Very Low')
+    document.title = 'Toner:\t' + (tonerFull ? 'Full' : tonerLow ? 'Low' : tonerVeryLow ? 'Very Low' : `${Number(parseInt(tonerPagesRemaining)).toLocaleString()} pages`);
 })();
