@@ -5,6 +5,7 @@
 // @description  try to take over the world!
 // @author       You
 // @match        https://172.16.104.76/hp/device/InternalPages/Index?id=SuppliesStatus
+// @match        https://172.16.104.80/hp/device/InternalPages/Index?id=SuppliesStatus
 // @grant        none
 // ==/UserScript==
 

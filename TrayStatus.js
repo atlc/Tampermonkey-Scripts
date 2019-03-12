@@ -5,6 +5,7 @@
 // @description  try to take over the world!
 // @author       You
 // @match        https://172.16.104.76/hp/device/DeviceStatus/Index
+// @match        https://172.16.104.80/hp/device/DeviceStatus/Index
 // @grant        none
 // ==/UserScript==
 
