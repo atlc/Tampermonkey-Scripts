@@ -13,7 +13,7 @@
     'use strict';
     let h1 = document.querySelector('h1');
     h1.addEventListener('click', () => window.history.back());
-    h1.style.border = "2px solid red";
+    h1.style.border = "3px solid red";
 
     document.getElementById('JobDetailsProperty_2').parentNode.style.fontWeight="bold";
 
@@ -21,4 +21,6 @@
     uselessDetails.forEach((d) => {
         document.getElementById(`JobDetailsProperty_${d}`).parentNode.remove();
     });
+
+    document.title = document.getElementById('JobDetailsValue_3').innerText 
 })();
