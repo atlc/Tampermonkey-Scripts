@@ -95,8 +95,8 @@
 
         let tonerPagesRemaining = document.getElementById('BlackCartridge1-EstimatedPagesRemaining').innerHTML;
         let tonerFull = (tonerPagesRemaining == '&gt;8800');
-        let tonerLow = (tonerPagesRemaining == 'Low')
-        let tonerVeryLow = (tonerPagesRemaining == 'Very Low')
+        let tonerLow = (tonerPagesRemaining == 'Low');
+        let tonerVeryLow = (tonerPagesRemaining == '--');
         document.title = 'Toner:\t' + (tonerFull ? 'Full' : tonerLow ? 'Low' : tonerVeryLow ? 'Very Low' : `${Number(parseInt(tonerPagesRemaining)).toLocaleString()} pages`);
     }
 
