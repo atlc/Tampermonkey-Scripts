@@ -26,6 +26,7 @@
         : pageURL.includes('JobLogReportDetails') ? jobLogDetails()
         : pageURL.includes('SuppliesStatus') ? tonerStatus()
         : pageURL.includes('UsagePage') ? usagePage()
+        : pageURL.includes('PrintInternalPages') ? timePunch()
         : console.log('This subpage does not have a script running');
     }
 
@@ -40,22 +41,19 @@
         if (tray2 == 'Empty') {
             changeFavicon();
             document.querySelector('title').innerText = 'PAPER TRAY 2 EMPTY';
-            ding.play();
-        } else if (tray2 != 'OK') {
+        } else if (tray2 != 'OK') { 
             changeFavicon();
             document.querySelector('title').innerText = 'PAPER TRAY 2 OPEN/ERROR';
-            ding.play();
         } else if (tray3 == 'Empty') {
             changeFavicon();
             document.querySelector('title').innerText = 'PAPER TRAY 3 EMPTY';
-            ding.play();
         } else if (tray3 != 'OK') {
             changeFavicon();
             document.querySelector('title').innerText = 'PAPER TRAY 3 OPEN/ERROR';
-            ding.play();
         }
 
         function changeFavicon() {
+            ding.play();
             document.querySelector("link[rel='shortcut icon']").href = 'https://i.imgur.com/OZ9vGoY.png';
         }
     }
@@ -95,8 +93,8 @@
 
         let tonerPagesRemaining = document.getElementById('BlackCartridge1-EstimatedPagesRemaining').innerHTML;
         let tonerFull = (tonerPagesRemaining == '&gt;8800');
-        let tonerLow = (tonerPagesRemaining == 'Low');
-        let tonerVeryLow = (tonerPagesRemaining == '--');
+        let tonerLow = (tonerPagesRemaining == 'Low')
+        let tonerVeryLow = (tonerPagesRemaining == '--')
         document.title = 'Toner:\t' + (tonerFull ? 'Full' : tonerLow ? 'Low' : tonerVeryLow ? 'Very Low' : `${Number(parseInt(tonerPagesRemaining)).toLocaleString()} pages`);
     }
 
@@ -109,6 +107,17 @@
 
         let uselessTable = document.getElementById('UsagePage.ImpressionsByMediaSizeTable.TableTitle.Print');
         uselessTable.parentElement.removeChild(uselessTable);
+    }
+
+    // This quick prints the two reports used for my small analytics & for verifying my clock-ins/clock-outs
+    function timePunch() {
+        [...document.getElementsByTagName('label')][3].click();
+        [...document.getElementsByTagName('label')][4].click();
+        setTimeout(function() {
+            if (confirm('Would you like to print your reports?')) {
+                document.getElementById('FormButtonPrint').click();
+            }
+        }, 3000);
     }
 
     assignScript();
